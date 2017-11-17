@@ -1,11 +1,28 @@
 package com.example.todolistapplication;
 
+/**
+ * Created by dean on 16/11/17.
+ */
+
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-public class TodoListActivity extends AppCompatActivity {
+import java.util.UUID;
+
+public class TodoActivity extends AppCompatActivity {
+
+    public static final String EXTRA_TODO_ID = "todo_id";
+
+    public static Intent newIntent(Context packageContext, UUID todoId) {
+        Intent intent = new Intent(packageContext, TodoActivity.class);
+        intent.putExtra(EXTRA_TODO_ID, todoId);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +33,9 @@ public class TodoListActivity extends AppCompatActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null){
-            TodoListfragment todoListfragment = new TodoListfragment();
+            Todofragment todoFragment = new Todofragment();
             fm.beginTransaction()
-                    .add(R.id.fragment_container, todoListfragment)
+                    .add(R.id.fragment_container, todoFragment)
                     .commit();
         }
 

@@ -1,5 +1,7 @@
 package com.example.todolistapplication;
 
+import android.icu.lang.UCharacter;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,9 +16,6 @@ public class Todo {
     private Date mDate;
     private boolean mIsComplete;
 
-    public UUID getId() {
-        return mId;
-    }
 
     public void setId(UUID mId) {
         this.mId = mId;
@@ -38,25 +37,29 @@ public class Todo {
         this.mDetail = mDetail;
     }
 
-    public Date getDate() {
-        return mDate;
-    }
-
     public void setDate(Date mDate) {
         this.mDate = mDate;
-    }
-
-    public boolean IsComplete() {
-        return mIsComplete;
     }
 
     public void setComplete(boolean mIsComplete) {
         this.mIsComplete = mIsComplete;
     }
 
+    public boolean IsComplete() {
+        return mIsComplete;
+    }
+
 
     public Todo() {
         mId = UUID.randomUUID();
         mDate = new Date();
+    }
+
+    public UUID getId() {
+        return mId;
+    }
+
+    public Date getDate() {
+        return mDate;
     }
 }
